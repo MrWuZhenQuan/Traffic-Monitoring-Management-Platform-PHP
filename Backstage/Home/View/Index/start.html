@@ -172,12 +172,10 @@
         <link rel="stylesheet" href="__PUBLIC__/vendors/morris/morris.css">
 
 
-        <script src="__PUBLIC__/vendors/jquery-1.9.1.min.js"></script>
         <script src="__PUBLIC__/vendors/jquery.knob.js"></script>
         <script src="__PUBLIC__/vendors/raphael-min.js"></script>
         <script src="__PUBLIC__/vendors/morris/morris.min.js"></script>
 
-        <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
         <script src="__PUBLIC__/vendors/flot/jquery.flot.js"></script>
         <script src="__PUBLIC__/vendors/flot/jquery.flot.categories.js"></script>
         <script src="__PUBLIC__/vendors/flot/jquery.flot.pie.js"></script>
@@ -185,7 +183,6 @@
         <script src="__PUBLIC__/vendors/flot/jquery.flot.stack.js"></script>
         <script src="__PUBLIC__/vendors/flot/jquery.flot.resize.js"></script>
 
-        <script src="__PUBLIC__/assets/scripts.js"></script>
         <script>
         $(function() {
             var data = [ ["January", 10], ["February", 8], ["March", 4], ["April", 13], ["May", 17], ["June", 9] ];
@@ -377,6 +374,9 @@
         function labelFormatter(label, series) {
             return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
         }
+        </script>
+        <script type="text/javascript">
+            $('#menu_item_3').addClass('active');   
         </script>
 </body>
 </html>
