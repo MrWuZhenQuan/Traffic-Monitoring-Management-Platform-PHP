@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>微信管理</title>
+</head>
+<body>
+<include file="./Backstage/Home/View/Common/weixin.html"/>
+               <!--/span-->
+    <div class="span9" id="content">
+                           <div class="navbar">
+                                <div class="navbar-inner">
+                                    <ul class="breadcrumb">
+                                        <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
+                                        <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
+                                        <li>
+                                            <a href="#">微信管理</a> <span class="divider">/</span>    
+                                        </li>
+                                        <li>
+                                            <a href="#">微信账号管理</a> <span class="divider">/</span> 
+                                        </li>
+                                        <li class="active">Tools</li>
+                                    </ul>
+                                </div>
+                            </div>
+                <div id="custom-bind" class="tab-pane active">
+                    <div class="row alert alert-info" style="margin: 20px 0;">
+                        <p style="line-height:30px">
+                            <strong>温馨提示：</strong> <br>
+                            系统提供微信公众平台上自动回复的接口，请按以下步骤操作<br>
+                            1. 请先登录<a href="http://mp.weixin.qq.com" target="_blank" class="blue">微信公众平台</a>开通公众账号、完善以下信息并提交<br>
+                            2. 进入[高级功能]，在关闭[编辑模式]后，开启并进入[开发模式]配置页面<br>
+                            3. 把下列的接口配置信息 <strong>URL</strong> 和<strong>Token</strong> 写入微信公众平台的配置页面后提交即可<br>
+                            4. 如果您的公众号拥有高级接口权限，请将公众平台中的 <strong>开发者凭据(AppId和AppSecret)</strong> 设置在此页面<br>
+                        </p>
+                    </div>
+
+                    <div class="row" style="margin-left:15px !important">
+                        <div class="weichat-account">
+                            <form id="custom-form" role="form" method="post" action="{:U('WechatReply/add_wechat_user')}" enctype="multipart/form-data">
+                    <div class="row form-group">
+                        <div class="col-md-12" >
+                            <label for="url">URL </label>
+                            <br/>
+                            <input id="url" name="wechat[url]" type="text"
+                                   value="{$wechat['url']}"
+                                   disabled style='width:40%;float:left'
+                                   />
+                            <input id="url_mark" name="wechat[url]" type="text"
+                                   value="{$wechat['url']}"
+                                   style='display:none'
+                                   />
+                            <div class='help-block'>点击内容3次即可选中内容</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12" >
+                            <label for="token">Token </label>
+                             <br/>
+                            <input id="token" name="wechat[token]" type="text"
+                                   value="{$wechat['token']}"
+                                   style='width:40%;float:left'/>
+                                   <div class='help-block'>点击内容3次即可选中内容</div>
+                        </div>
+                    </div>
+                                <div class="row form-group">
+                                    <div class="col-md-5">
+                                        <label for="account-name">公众号名称</label><br>
+                                        <input id="account-name" name="wechat[wechat_name]" type="text" placeholder="公众号名称" value ="{$wechat['wechat_name']}" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-5">
+                                        <label for="wechat">微信号</label><br>
+                                        <input id="wechat" name="wechat[wechat_id]" type="text" placeholder="原始ID" value ="{$wechat['wechat_id']}"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-5">
+                                        <label for="wechat-type">公众号类型 </label>
+                                        <select id="wechat-type" name="wechat[type]" value="{$wechat['type']}"> 
+                                            <option value="subscribe">订阅号</option>
+                                            <option value="subscribe_had_comfirm">订阅号（已认证）</option>
+                                            <option value="service">服务号</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group app-info" style="float:inherit;">
+                                    <div class="col-md-1"><label for="appID">appID </label>
+                                        <input id="appID" name="wechat[app_id]" type="text" placeholder="appID" value="{$wechat['app_id']}"
+                                               class="form-control"/></div>
+                                    `
+                                </div>
+                                <div class="row form-group app-info" style="float:inherit;">
+                                    <div class="col-md-1"><label for="appSecret">appSecret </label>
+                                        <input id="appSceret" name="wechat[app_secret]" type="text" placeholder="appSeceret" value="{$wechat['app_secret']}"
+                                               class="form-control"/></div>
+                                </div>
+
+<!--                                 <div class="row form-group">
+                                    <div class="col-md-5">
+                                        <label for="wechat-code">二维码 </label>
+                                        <input id="wechat-code" type="file" placeholder="微信号" name="qr_code"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-5"><img style="position: relative; top: -30px;height: 90px;"
+                                                               class="img-thumbnail"
+                                                               src="__ROOT__/{$wechat['qr_code']}"
+                                                               alt=""/></div>
+                                </div> -->
+                                <div class="row form-group">
+                                    <div class="col-md-2">
+                                        <button class="btn btn-large btn-primary" type="submit"
+                                                id="custom-bind-apply"><span
+                                                class="glyphicon glyphicon glyphicon-save"></span> 提交
+                                        </button>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-large btn-primary" type="button"
+                                                id="custom-bind-reset"><span
+                                                class="glyphicon glyphicon glyphicon-refresh"></span> 重置
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+</div>
+<!--翻页-->
+<div align="center">
+    {$page}
+</div>
+<!--翻页结束-->
+</body>
+<script>
+    $(function(){
+        $(".btn-search").click(function(){
+            var keyword = $("#search-keyword").val();
+            var url = "{$searchUrl}" + "?keyword=" + keyword;
+            $(".btn-search").attr("href",url);
+        });
+        {$js}
+    });
+</script>
+        <script type="text/javascript">
+            $('#menu_item_1').addClass('active');   
+        </script>
+</html>

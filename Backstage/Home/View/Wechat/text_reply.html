@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>角色管理</title>
+</head>
+<body onunload="none()">
+<include file="./Backstage/Home/View/Common/weixin.html"/>
+               <!--/span-->
+    <div class="span9" id="content">
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <th style="width:2%">
+                <label class="checkbox-inline"><input type="checkbox" value="option1"></label>
+            </th>
+            <th colspan="4" style="width:3%">
+                操作
+            </th>
+                    <th>关键词</th>
+                    <th>回答</th>
+                    <th>匹配类型</th>
+                    <th>时间</th>
+                    <th>操作</th>
+            </thead>
+            <tbody>
+            <volist name="list" id="temp">
+                <tr>
+                    <td>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="option1">
+                        </label>
+                    </td>
+
+                    <td>
+                        <a href="{$temp.modify_url}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </td>
+
+                    <td>
+                        <a href="javascript:if(confirm('确认删除该角色'))location='{$temp.del_url}'"><span
+                                class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                        <td>{$wechat['keyword']}</td>
+                        <td><span class="content" title="{$wechat['content']}">{$wechat['before']}</span></td>
+                        <td><span class="match-type">{$wechat['match_type']}</span></td>
+                        <td>{$wechat['updated_time']|date='Y-m-d H:i:s', ###}</td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--翻页-->
+<div align="center">
+    {$page}
+</div>
+<!--翻页结束-->
+</body>
+<script>
+    $(function(){
+        $(".btn-search").click(function(){
+            var keyword = $("#search-keyword").val();
+            var url = "{$searchUrl}" + "?keyword=" + keyword;
+            $(".btn-search").attr("href",url);
+        });
+        {$js}
+    });
+</script>
+
+</html>

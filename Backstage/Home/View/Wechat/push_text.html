@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+
+<body onunload="none()">
+<include file="./Backstage/Home/View/Common/framework.html"/>
+<!--右边主模块-->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h3>
+        <ol class="breadcrumb table-title">
+            <li><a class="product">{$navigation[0]}</a></li>
+            <li class="active">{$navigation[1]}</li>
+        </ol>
+    </h3>
+    <form accept-charset="UTF-8" action="{:U('MsgSend/sendMsg')}" class="form-horizontal"
+          enctype="multipart/form-data" id="new_product" method="post" onsubmit="return checkMobileFromComponent()">
+
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">内容</label>
+
+            <div class="col-sm-8"><textarea class="form-control text_width" id="msg_content" name="msg_content"
+                                            rows="4"></textarea></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" id="submit1" type="submit"> 推送</button>
+                <button type="button" class="btn btn-default" onclick="javascript:window.history.go(-1);"> 取 消</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript">
+    /**
+     * 初始化接口radio的状态*/
+    $(function () {
+        $('input:radio[name=radio_interface]:first').attr('checked', 'checked');
+    });
+
+    function showStoreType() {
+        $('#store_div').show();
+    }
+</script>
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+
+
+    function checkMobileFromComponent() {
+        var numbers = $('#numbers').val();
+        var numberArray = numbers.split(";");
+
+        var result = true;
+        for (var i = 0; i < numberArray.length; i++) {
+            if (false === checkMobileNumber(numberArray[i])) {
+                result = false;
+                break;
+            }
+        }
+
+        if (!result) {
+            $('#span_error').text('号码格式不正确,请检查');
+        }
+
+        return result;
+    }
+
+    /**
+     * 正则表达式判断是否是合法的手机号码
+     * */
+    function checkMobileNumber(number) {
+        if ((/^1[3|4|5|8][0-9]\d{4,8}$/.test(number))) {
+            return true;
+        }
+        return false;
+    }
+</script>
+
+</body>
+</html>

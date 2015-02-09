@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>角色管理</title>
+</head>
+<body onunload="none()">
+<include file="./Backstage/Home/View/Common/framework.html"/>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h3>
+        <ol class="breadcrumb table-title">
+            <li><a class="product">{$navigation[0]}</a></li>
+            <li class="active">{$navigation[1]}</li>
+
+            <!--搜索框-->
+            <div class="search input-group-sm"><input id="search-keyword" type="text" class="form-control"
+                                                      placeholder="搜索">
+                <span class="input-group-btn">
+                    <a class="btn btn-default btn-search" href="" type="button" style="border:0;padding-bottom: 2px;
+                        margin-top: -2px;" placeholder="Username"><span class="glyphicon glyphicon-search" style="color:#ccc"></span>
+                    </a>
+                </span>
+
+            </div>
+            <!--搜索框结束-->
+            <!--添加删除操作按钮-->
+            <div class="function">
+                <a href='{:U("WechatReply/delete_link")}'>
+                <li><img src="__PUBLIC__/backstage/framework/img/delete.png">
+
+                    <p>删除</p></li>
+            </div>
+            <div class="function">
+                <a href='{:U("WechatReply/add_link_reply")}'>
+                    <li><img src="__PUBLIC__/backstage/framework/img/add.png">
+
+                        <p>添加</p>
+                    </li>
+                </a>
+            </div>
+
+        </ol>
+    </h3>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <th style="width:2%">
+                <label class="checkbox-inline"><input type="checkbox" value="option1"></label>
+            </th>
+            <th colspan="4" style="width:3%">
+                操作
+            </th>
+                    <th>关键词</th>
+                    <th>回答</th>
+                    <th>匹配类型</th>
+                    <th>时间</th>
+                    <th>操作</th>
+            </thead>
+            <tbody>
+            <volist name="list" id="temp">
+                <tr>
+                    <td>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="option1">
+                        </label>
+                    </td>
+
+                    <td>
+                        <a href="{$temp.modify_url}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </td>
+
+                    <td>
+                        <a href="javascript:if(confirm('确认删除该角色'))location='{$temp.del_url}'"><span
+                                class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                        <td>{$wechat['keyword']}</td>
+                        <td><span class="content" title="{$wechat['content']}">{$wechat['before']}</span></td>
+                        <td><span class="match-type">{$wechat['match_type']}</span></td>
+                        <td>{$wechat['updated_time']|date='Y-m-d H:i:s', ###}</td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--翻页-->
+<div align="center">
+    {$page}
+</div>
+<!--翻页结束-->
+</body>
+<script>
+    $(function(){
+        $(".btn-search").click(function(){
+            var keyword = $("#search-keyword").val();
+            var url = "{$searchUrl}" + "?keyword=" + keyword;
+            $(".btn-search").attr("href",url);
+        });
+        {$js}
+    });
+</script>
+
+</html>

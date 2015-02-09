@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+
+    <title>微信公众平台</title>
+    <link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css"
+          href="__PUBLIC__/backstage/css/wechat-material/base22a2de.css">
+    <link onerror="wx_loaderror(this)" rel="stylesheet" type="text/css"
+          href="__PUBLIC__/backstage/css/wechat-material/lib218878.css">
+    <link onerror="wx_loaderror(this)" rel="stylesheet"
+          href="https://res.wx.qq.com/mpres/htmledition/style/page/media/appmsg_edit218878.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/backstage/css/wechat-material/appmsg_editor218878.css">
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/backstage/assert/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="__PUBLIC__/backstage/assert/ueditor/ueditor.all.min.js"></script>
+
+    <style>
+
+        .inner_news_list {
+            padding: 20px;
+            border: 1px solid #e7e7eb;
+            background-color: #f4f5f9;
+            min-height: 350px;
+        }
+    </style>
+</head>
+<body>
+<include file="./Backstage/Home/View/Common/framework.html"/>
+<!--右边主模块-->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<h3>
+    <ol class="breadcrumb table-title">
+        <li><a class="product">{$navigation[0]}</a></li>
+        <li class="active">{$navigation[1]}</li>
+    </ol>
+</h3>
+<div id="body" class="body page_appmsg_edit">
+<div id="js_container_box" class="container_box cell_layout side_l">
+
+
+<div class="col_main">
+
+<div class="main_bd">
+<div class="media_preview_area">
+    <div class="appmsg multi editing">
+        <div id="js_appmsg_preview" class="appmsg_content">
+            <div id="appmsgItem1" data-fileid="202331716" data-id="1" class="js_appmsg_item has_thumb">
+
+                <div class="appmsg_info">
+                    <!--<em class="appmsg_date">2014-12-31 15:04:19</em>-->
+                </div>
+                <div class="cover_appmsg_item">
+                    <h4 class="appmsg_title"><a id="appmsg_title1" href="javascript:void(0);"
+                                                onclick="return false;"
+                                                target="_blank">标题</a>
+                    </h4>
+
+                    <div class="appmsg_thumb_wrp">
+                        <img id="appmsg_img1" class="js_appmsg_thumb appmsg_thumb" src="">
+                        <i class="appmsg_thumb default">封面图片</i>
+                    </div>
+                    <div class="appmsg_edit_mask">
+                        <a id="editIcon1" onclick="return false;"
+                           class="icon18_common edit_gray js_edit" data-editid="1"
+                           href="javascript:;">编辑</a>
+                        <!--<a id="readListIcon1" onclick="return false;"
+                           class="icon14_common sort_gray js_edit" data-listid="1"
+                           href="javascript:;">从列表读取</a>-->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <a onclick="return false;" class="create_access_primary appmsg_add" id="js_add_appmsg"
+           href="javascript:void(0);">
+            <i class="icon20_common add_gray">增加一条</i>
+        </a>
+    </div>
+</div>
+<div class="media_edit_area">
+<div id="js_appmsg_editor">
+<div class="appmsg_editor" style="margin-top: 0px;">
+<button class="btn btn-primary" id="btn_select" data-toggle="modal"
+        data-target="#add-news"
+        type="button" style="padding: 0px !important;margin-bottom: 5px"> 选择
+</button>
+<div class="inner">
+
+
+    <div class="appmsg_edit_item">
+        <label for="" class="frm_label">标题</label>
+        <span class="frm_input_box"><input type="text" class="frm_input js_title" readonly></span>
+
+        <div class="frm_msg fail js_title_error" style="display: none;">标题不能为空且长度不能超过64字
+        </div>
+    </div>
+    <div class="appmsg_edit_item">
+        <label for="" class="frm_label">
+            <strong class="title">作者</strong>
+
+            <p class="tips l">（选填）</p>
+        </label>
+        <span class="frm_input_box"><input type="text" class="frm_input js_author " readonly></span>
+
+        <div class="frm_msg fail js_author_error" style="display: none;">作者不能超过8个字</div>
+    </div>
+    <div class="appmsg_edit_item">
+        <label for="" class="frm_label">
+            <strong class="title">封面</strong>
+
+            <!--<p class="js_cover_tip tips">（大图片建议尺寸：900像素 * 500像素）</p>-->
+        </label>
+
+        <div class="upload_wrap">
+            <!--<div class="upload_box">
+                <div class="upload_area">
+                    <input type="file" name="photo" id="cover_input"/>
+                </div>
+            </div>-->
+            <!--&nbsp;&nbsp;<a id="js_imagedialog" href="javascript:void(0);"
+                           onclick="return false;"
+                           class="btn btn_upload">从图片库选择</a>
+-->
+            <p class="js_cover upload_preview" style="display: block;"><img
+                    src="" id="img_cover">
+              <!--  <a class="js_removeCover" href="javascript:void(0);"
+                   onclick="return false;">删除</a>-->
+                <input id="cover_checkbox" type="checkbox" checked="false" />
+                封面图片显示在正文中
+            </p>
+        </div>
+
+
+
+        <div class="frm_msg fail js_cover_error" style="display: none;">必须插入一张图片</div>
+    </div>
+
+    <p><a class="js_addDesc" href="javascript:void(0);" onclick="return false;"
+          style="display: none;">添加摘要</a>
+    </p>
+
+    <div class="js_desc_area dn appmsg_edit_item" style="display: none;">
+        <label for="" class="frm_label">摘要</label>
+                                    <span class="frm_textarea_box"><textarea
+                                            class="js_desc frm_textarea"></textarea></span>
+
+        <div class="frm_msg fail js_desc_error" style="display: none;"></div>
+    </div>
+     <div id="js_ueditor" class="appmsg_edit_item content_edit"
+          style="margin-top: 0px; margin-left: 0px;">
+         <script id="editor" type="text/plain" name="good[intro]"
+                 style="width:700px;height:200px; display: block;"></script>
+         <!--<label for="" class="frm_label">
+                                        <strong class="title">正文</strong>
+
+                                        <p class="tips l">
+                                            <em id="js_auto_tips">（自动保存：2014-12-31 15:22:15）</em>
+                                            <a id="js_cancle" style="display: none;" href="javascript:void(0);"
+                                               onclick="return false;">取消</a>
+                                        </p>
+                                    </label>
+
+                                    <div class="frm_msg fail js_catch_tips" style="display: none;">有5张图片粘贴失败</div>
+                                    <div class="frm_msg fail js_content_error" style="display: none;">
+                                        正文不能为空且长度不能超过20000字
+                                    </div>-->
+                                </div>
+    <!--    <p><a class="js_addURL" href="javascript:void(0);" onclick="return false;">添加原文链接</a>
+        </p>-->
+
+    <!-- <div class="js_url_area dn appmsg_edit_item" style="display: none;">
+         <label for="" class="frm_label">添加原文链接</label>
+         <span class="frm_input_box"><input type="text" class="js_url frm_input"></span>
+
+         <div class="frm_msg fail js_url_error" style="display: none;">链接不合法</div>
+     </div>-->
+
+</div>
+<div class="inner_news_list">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">新闻类型</label>
+
+        <div class="col-sm-8">
+            <select id="msg_type" name="msg_type" class="form-control input_width">
+                <option value="xxx">xxx</option>
+                <option value="yyy">yyy</option>
+
+            </select>
+        </div>
+    </div>
+
+
+    <div class="table-responsive">
+
+        <!-- <div class="input-group" style="float: right; margin-bottom: 5px; width: 160px">
+             <span class="input-group-addon label-primary" style="color:#ffffff;">模板类型</span>
+             <select style="margin: 0 !important;float: left; width:120px;" class="form-control">
+                 <option value="all">全部</option>
+                 <volist name="types" id="vo">
+                     <option value="{$vo.ID}">{$vo.name}</option>
+                 </volist>
+             </select>
+         </div>
+ -->
+
+        <!--form start-->
+        <table class="table table-bordered table-striped" style="margin-top: 10px">
+            <thead>
+            <th style="width:2%">
+                <label class="checkbox-inline"><input type="checkbox" value="option1"></label>
+            </th>
+            <th>标题</th>
+            <th>作者</th>
+            <th>时间</th>
+            <th>状态</th>
+            <th colspan="2" style="width:2%">操作</th>
+
+            </thead>
+            <tbody id="template-list-content">
+            <tr>
+                <td>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="option1">
+                    </label>
+                </td>
+
+
+                <td>樱花节</td>
+                <td>OK珠海</td>
+                <td>2014</td>
+                <td><span class="label label-success" rel="popover">已发送</span></td>
+                <td><a href="'" title="修改"><span
+                        class="glyphicon glyphicon-pencil"></span></a></td>
+                <td>
+                    <a href=""
+                       title="删除"><span
+                            class="glyphicon glyphicon-trash"></span></a></td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="option1">
+                    </label>
+                </td>
+
+                <td>樱花节</td>
+                <td>OK珠海</td>
+                <td>2014</td>
+                <td><span class="label label-success" rel="popover">已发送</span></td>
+                <td><a href="'" title="修改"><span
+                        class="glyphicon glyphicon-pencil"></span></a></td>
+                <td>
+                    <a href=""
+                       title="删除"><span
+                            class="glyphicon glyphicon-trash"></span></a></td>
+
+            </tr>
+
+
+            <!--<volist name="msgLog" id="vo">
+                <tr>
+                    <td>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="option1">
+                        </label>
+                    </td>
+                    <td>{$vo.content}</td>
+                    <td>{$vo.numbers}</td>
+                    <td>{$vo.status}</td>
+                    <td>{$vo.count}</td>
+                    <td>{$vo.send_time}</td>
+                </tr>
+            </volist>-->
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<i class="arrow arrow_out" style="margin-top: 0px;"></i>
+<i class="arrow arrow_in" style="margin-top: 0px;"></i>
+
+<p class="editor_extra_info mini_tips icon_after" id="js_editor_extra_info">
+
+    <!-- <a target="_blank"
+        href="https://mp.weixin.qq.com/cgi-bin/settingpage?t=setting/function&action=function&set_water=1&lang=zh_CN&token=274947611"
+        class=" page_assist_link">修改图片水印 <i class="icon_mini_tips document_link"></i></a>-->
+</p>
+</div>
+
+</div>
+
+</div>
+<div class="tool_area">
+    <div class="tool_bar border tc">
+        <span id="js_submit" class="btn btn_input btn_primary"><button>保存</button></span>
+        <span id="js_preview" class="btn btn_input btn_default"><button>预览</button></span>
+    </div>
+</div>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+
+<div class="dialog_wrp img_dialog_wrp" style="width: 846px; margin-left: -423px; margin-top: -289.5px; display: none;">
+    <div class="dialog">
+        <div class="dialog_hd">
+            <h3>选择图片</h3>
+            <a href="javascript:;" onclick="return false" class="icon16_opr closed pop_closed">关闭</a>
+        </div>
+        <div class="dialog_bd">
+            <div class="img_pick_panel inner_container_box side_l cell_layout">
+                <div class="inner_side">
+                    <div class="group_list">
+                        <div class="inner_menu_box">
+                            <dl class="inner_menu js_group">
+                                <dd id="js_group1" class="inner_menu_item js_groupitem selected" data-groupid="1">
+                                    <a href="javascript:;" class="inner_menu_link" title="未分组" onclick="return false">
+                                        <strong>未分组</strong><em class="num">(<span>4</span>)</em>
+                                    </a>
+                                </dd>
+
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner_main">
+                    <div class="img_pick_area">
+                        <div class="sub_title_bar in_dialog">
+                            <div class="upload_box r align_right">
+                                <span class="upload_area"><a id="js_imageupload7561939051374793"
+                                                             class="btn btn_primary js_imageupload" data-groupid=""
+                                                             width="106" height="32">本地上传</a><ul class="upload_file_box"
+                                                                                                 style="display: none;"></ul><object
+                                        type="application/x-shockwave-flash"
+                                        data="https://res.wx.qq.com/mpres/zh_CN/htmledition/plprecorder/biz_web/uploadify218877.swf"
+                                        width="100%" height="100%" id="js_imageupload7561939051374793Uploader"
+                                        style="zoom: 0;">
+                                    <param name="quality" value="high">
+                                    <param name="wmode" value="opaque">
+                                    <param name="allowScriptAccess" value="always">
+                                    <param name="flashvars"
+                                           value="uploadifyID=js_imageupload7561939051374793&amp;pagepath=/cgi-bin/&amp;script=https%3A%2F%2Fmp.weixin.qq.com%2Fcgi-bin%2Ffiletransfer%3Faction%3Dupload_material%26f%3Djson%26writetype%3Ddoublewrite%26groupid%3D1%26ticket_id%3Dlittlestrar%26ticket%3D86440adad6beabd2e2291a1cc166b997726e16aa%26token%3D274947611%26lang%3Dzh_CN&amp;folder=uploads&amp;width=106&amp;height=32&amp;wmode=opaque&amp;method=POST&amp;queueSizeLimit=5&amp;simUploadLimit=1&amp;hideButton=true&amp;multi=true&amp;auto=true&amp;fileDataName=file&amp;queueID=fileQueue">
+                                </object></span>
+                            </div>
+
+                            <div class="bubble_tips bubble_right warn r">
+                                <div class="bubble_tips_inner">建议尺寸：900像素 * 500像素</div>
+                                <i class="bubble_tips_arrow out"></i>
+                                <i class="bubble_tips_arrow in"></i>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="img_pick">
+                                <i class="icon_loading_small white js_loading" style="display: none;"></i>
+                                <ul class="group js_list img_list">
+
+                                    <li class="img_item js_imageitem" data-id="202331716"
+                                        data-url="https://mmbiz.qlogo.cn/mmbiz/IbfYyiabDFJZW4jXI0iaHvZzpibZmoID5F6hE1p0SqfdU4oyKXTu3d6KkXG4HLNIWhX04J4hVZ9pDCzwKJ5MWh46Q/0">
+                                        <label class="frm_checkbox_label img_item_bd">
+
+                                            <img src="css/getimgdata(7)" alt="JOJO_14.png" class="pic">
+
+                                            <span class="lbl_content">JOJO_14.png</span>
+
+                                            <div class="selected_mask">
+                                                <div class="selected_mask_inner"></div>
+                                                <div class="selected_mask_icon"></div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li class="img_item js_imageitem" data-id="202331706"
+                                        data-url="https://mmbiz.qlogo.cn/mmbiz/IbfYyiabDFJZW4jXI0iaHvZzpibZmoID5F6c7IT60CLOpQT6FkKRtdQPUqa4wcTMibY6Ktd5L8Aea27NAv5icrgSibSg/0">
+                                        <label class="frm_checkbox_label img_item_bd">
+
+                                            <img src="css/getimgdata(8)" alt="JOJO_01.png" class="pic">
+
+                                            <span class="lbl_content">JOJO_01.png</span>
+
+                                            <div class="selected_mask">
+                                                <div class="selected_mask_inner"></div>
+                                                <div class="selected_mask_icon"></div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li class="img_item js_imageitem" data-id="200560281" data-url="">
+                                        <label class="frm_checkbox_label img_item_bd">
+
+                                            <img src="css/getimgdata(9)" alt="Hydrangeas.jpg" class="pic">
+
+                                            <span class="lbl_content">Hydrangeas.jpg</span>
+
+                                            <div class="selected_mask">
+                                                <div class="selected_mask_inner"></div>
+                                                <div class="selected_mask_icon"></div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+                                    <li class="img_item js_imageitem" data-id="10000007" data-url="">
+                                        <label class="frm_checkbox_label img_item_bd">
+
+                                            <img src="css/getimgdata(10)" alt="DSC03285.JPG" class="pic">
+
+                                            <span class="lbl_content">DSC03285.JPG</span>
+
+                                            <div class="selected_mask">
+                                                <div class="selected_mask_inner"></div>
+                                                <div class="selected_mask_icon"></div>
+                                            </div>
+                                        </label>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                            <div class="js_pagebar"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="dialog_ft_desc">已选<span class="js_selected">0</span>个，可选1个</p>
+            </div>
+        </div>
+
+        <div class="dialog_ft">
+
+            <span class="btn btn_disabled btn_input js_btn_p"><button type="button" class="js_btn" data-index="0">确定
+            </button></span>
+
+            <span class="btn btn_default btn_input js_btn_p"><button type="button" class="js_btn" data-index="1">取消
+            </button></span>
+
+        </div>
+
+
+</div>
+</div>
+
+<!--boostrap modal-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="add-news" tabindex="-1" role="dialog" aria-labelledby="addLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 sclass="modal-title" id="addLabel"><span class="glyphicon glyphicon-list-alt"></span>
+                    添加多图文</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group"><span
+                                    style="font-size: 18px;margin-top: 10px;">图文标题</span></div>
+                            <div class="btn-group"><input name="wechat[title]" id="key" type="text" class="form-control" placeholder="输入标题进行查找"/></div>
+                            <div class="btn-group">
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" id="search">
+                                    <strong>查找</strong>
+                                </button>
+                            </div>
+                            <div class="btn-group"></div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            共有 <span class="red" id="count_num">{$count}</span> 条图文
+                            <button type="button" class="btn btn-default" id="p_page"><strong>上一页</strong>
+                            </button>
+                                        <span id="page-index" data-page="1" data-max-page="{$page}">第<span id="page">1</span>页/共<span
+                                                id="max-page">{$page}</span>页</span>
+                            <button type="button" class="btn btn-default" id="n_page"><strong>下一页</strong>
+                            </button>
+                            <div id="imgtxt-page">
+                                <ul class="list-unstyled" id="data-list">
+                                    <volist name = "wechats" id ="item">
+                                        <li>
+                                            <input type="checkbox" name="check" data-imgtxt-id="{$item['id']}"/>
+                                            <label> {$item['title']}</label>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <button type="button" class="btn btn-primary " id="add-return" data-dismiss="modal">确 定
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript" src="__PUBLIC__/backstage/js/wechat-material/jquery-1.8.0.min.js"></script>
+<script type="application/javascript" src="__PUBLIC__/backstage/js/wechat-material/event.js"></script>
+
+</body>
+
+</html>

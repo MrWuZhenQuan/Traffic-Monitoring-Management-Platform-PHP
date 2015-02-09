@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>微信管理</title>
+    <style>
+        .photo {
+            list-style: none;
+            float: left;
+            padding: 0.5%;
+            width: 18%;
+            height: 20%;
+            margin-right: 3%;
+            margin-top: 3%;
+            box-shadow: 5px 5px 5px lightgray;
+        }
+
+        .photos {
+            margin: 0px 0px;
+            padding: 0px 0px;
+            margin-top: -2%;
+            heigth: 30%;
+        }
+
+        .photo-item {
+            width: 99%;
+            height: 100%;
+        }
+
+        .photo-pic {
+            height: 10em;
+            overflow: hidden;
+            padding: 0px;
+        }
+
+        .photo-title {
+            margin-top: 10%;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+<include file="./Backstage/Home/View/Common/framework.html"/>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h3>
+        <ol class="breadcrumb table-title">
+            <!--搜索框-->
+            <div class="search input-group-sm">
+                <input id="search-keyword" type="text" class="form-control" placeholder="搜索">
+                  <span class="input-group-btn">
+                    <label id="btn-search" class="btn btn-default" type="button" style="border:0;padding-bottom: 2px;
+            margin-top: -2px;" placeholder="Username">
+                        <span class="glyphicon glyphicon-search" style="color:#ccc"></span>
+                    </label>
+                  </span>
+            </div>
+            <!--搜索框结束-->
+
+            <li><a class="product">{$navigation[0]}</a></li>
+            <li class="active">{$navigation[1]}</li>
+            <!--<li class="active">{$navigation[1]}</li>-->
+            <div class="function">
+                <a href='{:U("WechatMaterial/add")}'>
+                    <li><img src="__PUBLIC__/backstage/framework/img/add.png">
+
+                        <p>添加图片</p>
+                    </li>
+                </a>
+            </div>
+        </ol>
+    </h3>
+    <div style="position:relative">
+        <ul class="list-group photos">
+            <li class="list-group-item photo">
+                <div class="photo-pic">
+                    <a href="">
+                        <empty name="photo"><img class="img photo-item"
+                                                               src="__PUBLIC__/backstage/img/default-unselect.png">
+                            <else/>
+                            <img class="img photo-item" src=""></empty>
+                    </a>
+                </div>
+                <div class="photo-title">
+                    <a title="photo" href=""><b>xxxxxx</b></a>
+                </div>
+
+                <div class="col-md-12" style="padding: 0">
+                    <span class="help-block delete"><a
+                            href=""> 推送</a></span>
+                    <span class="help-block delete"><a
+                            href=""> 修改</a></span>
+                    <span class="help-block delete"><a
+                            href=""> 删除</a></span>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+
+
+</div>
+
+
+</body>
+<script>
+    $(function () {
+        $(".btn-search").click(function () {
+            var keyword = $("#search-keyword").val();
+            var url = "{$searchUrl}" + "?keyword=" + keyword;
+            $(".btn-search").attr("href", url);
+        });
+        {
+            $js
+        }
+    });
+</script>
+</html>

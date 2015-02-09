@@ -30,6 +30,7 @@ class LoginService extends CommonService
                     $data['mobile'] = $result['mobile'];
                     $data['status'] = 0;
                     $data['content'] = "登录成功";
+                    session(C('USER_ID'),  $result['id']);
                     $this->updateUserSid($loginname);
                 } else {
                     $data['status'] = 1;

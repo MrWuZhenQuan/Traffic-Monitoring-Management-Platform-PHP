@@ -12,4 +12,5 @@ class IndexController extends Controller {
     	$Model = M('user');
     	$this->display();
     }
+
 }

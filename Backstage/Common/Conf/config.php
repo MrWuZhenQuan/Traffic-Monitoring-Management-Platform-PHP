@@ -9,7 +9,7 @@ $appConfig =  array(
     'DEFAULT_MODULE' => 'Home',
     //设置session的过期时间,以及session生效的域名
     'SESSION_OPTIONS' => array(
-        'expire' => 60
+        'expire' => 6000
     ),
     // 默认控制器
     'DEFAULT_CONTROLLER' => 'Index',

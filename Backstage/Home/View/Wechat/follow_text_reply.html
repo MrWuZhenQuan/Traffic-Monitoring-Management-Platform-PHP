@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>微信管理</title>
+        <style>
+        .form-group {
+            margin-bottom: 30px;
+            border-color:#ccc;
+        }
+    </style>
+</head>
+<body>
+<include file="./Backstage/Home/View/Common/weixin.html"/>
+               <!--/span-->
+    <div class="span9" id="content">
+    <div id="body-wrapper">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5" style="margin-top: 10px;">
+                    <form id="form" action="{:U('WechatReply/add_follow_text_reply')}" method="post">
+                        <div class="form-group">
+                            <label for="reply-content">自动回复内容</label><br>
+                            <input type="hidden" name="wechat[id]" value="{$wechat['id']}"/>
+                            <textarea id="reply-content" name="wechat[content]" class="form-group" style="width:444px;height:100px">{$wechat['content']}</textarea>
+                            <span class="help-block">必填, 用户添加您的时候自动回复语；超链接添加形式，如：&lt;a href="http://www.baidu.com"&gt;百度&lt;/a&gt;</span>
+                        </div><br><br>
+                        <div>
+                            <button type="submit" class="btn btn-primary" id="save" >保 存
+                            </button>
+                            <!-- <button type="button" class="btn btn-default" id="return">切换到图文回复</button> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(function(){
+        $(".btn-search").click(function(){
+            var keyword = $("#search-keyword").val();
+            var url = "{$searchUrl}" + "?keyword=" + keyword;
+            $(".btn-search").attr("href",url);
+        });
+        {$js}
+    });
+</script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>微信管理</title>
+</head>
+<body>
+<include file="./Backstage/Home/View/Common/framework.html"/>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h3>
+        <ol class="breadcrumb table-title">
+            <!--搜索框-->
+            <div class="search input-group-sm">
+                <input id="search-keyword" type="text" class="form-control" placeholder="搜索">
+                  <span class="input-group-btn">
+                    <label id="btn-search" class="btn btn-default" type="button" style="border:0;padding-bottom: 2px;
+            margin-top: -2px;" placeholder="Username">
+                        <span class="glyphicon glyphicon-search" style="color:#ccc"></span>
+                    </label>
+                  </span>
+            </div>
+            <!--搜索框结束-->
+
+            <li><a class="product">{$navigation[0]}</a></li>
+            <li class="active">{$navigation[1]}</li>
+            <!--<li class="active">{$navigation[1]}</li>-->
+            <div class="function">
+                <a href='{:U("WechatMaterial/material_img_text_add")}'>
+                    <li><img src="__PUBLIC__/backstage/framework/img/add.png">
+
+                        <p>添加多图文</p>
+                    </li>
+                </a>
+            </div>
+
+
+            <div class="function">
+                <a href='{:U("WechatMaterial/material_img_text_add")}'>
+                    <li><img src="__PUBLIC__/backstage/framework/img/add.png">
+
+                        <p>添加单图文</p>
+                    </li>
+                </a>
+            </div>
+        </ol>
+    </h3>
+
+
+    <div class="table-responsive">
+
+        <!-- <div class="input-group" style="float: right; margin-bottom: 5px; width: 160px">
+             <span class="input-group-addon label-primary" style="color:#ffffff;">模板类型</span>
+             <select style="margin: 0 !important;float: left; width:120px;" class="form-control">
+                 <option value="all">全部</option>
+                 <volist name="types" id="vo">
+                     <option value="{$vo.ID}">{$vo.name}</option>
+                 </volist>
+             </select>
+         </div>
+ -->
+
+        <!--form start-->
+        <table class="table table-bordered table-striped">
+            <thead>
+            <th style="width:2%">
+                <label class="checkbox-inline"><input type="checkbox" value="option1"></label>
+            </th>
+            <th>标题</th>
+            <th>作者</th>
+            <th>时间</th>
+            <th>状态</th>
+            <th colspan="3" style="width:3%">操作</th>
+
+            </thead>
+            <tbody id="template-list-content">
+            <tr>
+                <td>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="option1">
+                    </label>
+                </td>
+
+
+                <td>樱花节</td>
+                <td>OK珠海</td>
+                <td>2014</td>
+                <td><span class="label label-success" rel="popover">已发送</span></td>
+                <td><a href="'" title="修改"><span
+                        class="glyphicon glyphicon-pencil"></span></a></td>
+                <td>
+                    <a href=""
+                       title="删除"><span
+                            class="glyphicon glyphicon-trash"></span></a></td>
+                <td>
+                    <a href=""
+                       title="推送"><span
+                            class="glyphicon glyphicon-cloud-upload"></span></a></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="option1">
+                    </label>
+                </td>
+
+                <td>樱花节</td>
+                <td>OK珠海</td>
+                <td>2014</td>
+                <td><span class="label label-success" rel="popover">已发送</span></td>
+                <td><a href="'" title="修改"><span
+                        class="glyphicon glyphicon-pencil"></span></a></td>
+                <td>
+                    <a href=""
+                       title="删除"><span
+                            class="glyphicon glyphicon-trash"></span></a></td>
+                <td>
+                    <a href=""
+                       title="推送"><span
+                            class="glyphicon glyphicon-cloud-upload"></span></a></td>
+            </tr>
+
+
+            <!--<volist name="msgLog" id="vo">
+                <tr>
+                    <td>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="option1">
+                        </label>
+                    </td>
+                    <td>{$vo.content}</td>
+                    <td>{$vo.numbers}</td>
+                    <td>{$vo.status}</td>
+                    <td>{$vo.count}</td>
+                    <td>{$vo.send_time}</td>
+                </tr>
+            </volist>-->
+            </tbody>
+        </table>
+    </div>
+    <!--start end-->
+
+    <!--翻页-->
+    <div align="center">
+        {$Page}
+    </div>
+    <!--翻页结束-->
+
+</div>
+
+
+<!--翻页-->
+<div align="center">
+    {$page}
+</div>
+<!--翻页结束-->
+</body>
+<script>
+    $(function () {
+        $(".btn-search").click(function () {
+            var keyword = $("#search-keyword").val();
+            var url = "{$searchUrl}" + "?keyword=" + keyword;
+            $(".btn-search").attr("href", url);
+        });
+        {
+            $js
+        }
+    });
+</script>
+</html>

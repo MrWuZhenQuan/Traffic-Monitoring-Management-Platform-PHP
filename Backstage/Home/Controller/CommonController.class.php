@@ -19,17 +19,17 @@ class CommonController extends Controller {
     public function _initialize()
     {
         //检测是否登录
-        $this->loginOrNot();
+        //$this->loginOrNot();
 
         //如果为超级管理员，则输出全部菜单
-        if (session(C('SUPERORNOT')) == true)
-            $this->throwMenu();
-        else
-            $this->getMenuByUserId();
+        // if (session(C('SUPERORNOT')) == true)
+        //     $this->throwMenu();
+        // else
+        //     $this->getMenuByUserId();
 
-        $this->getCurrMenu();
+        // $this->getCurrMenu();
         //扔出当前登录用户的名称
-        $this->assign('LoginUser', session(C('LOGINNAME')));
+        // $this->assign('LoginUser', session(C('LOGINNAME')));
     }
 
     /**
