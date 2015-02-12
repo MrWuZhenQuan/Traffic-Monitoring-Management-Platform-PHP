@@ -47,6 +47,11 @@ class LoginController extends Controller {
     {
         $loginService = D('Login', 'Service');
         $result = $loginService->exitLogin();
-        $this->success($result['data']['success'], U('Login/index'));
-    }
+        // var_dump($result);die;
+        if($result['status'] === false){
+            $this->error($result['data']['error'], U('Login/index'));
+        }else{
+            $this->success($result['data']['success'], U('Login/index'));
+        }
+    }   
 }

@@ -30,6 +30,7 @@ class LoginService extends CommonService
                     $data['mobile'] = $result['mobile'];
                     $data['status'] = 0;
                     $data['content'] = "登录成功";
+
                     session(C('USER_ID'),  $result['id']);
                     $this->updateUserSid($loginname);
                 } else {
@@ -41,7 +42,7 @@ class LoginService extends CommonService
                 $data['content'] = "该用户不存在";
             }
             $superOrNot=$result['Type'] === 'SUPERADMIN'?true:false;
-
+            $this->formReturnData($data,$result,$superOrNot);
             return $data;
     }
 
@@ -63,11 +64,11 @@ class LoginService extends CommonService
             session(C('TYPE'), $result['Type']);
             session(C('SUPERORNOT'), $superOrNot);
             //如果商家是多子账户，则需要找出对应的 Belong_to_which_site
-            session(C('SITE_ID'),$result['Belong_to_which_site']);
+            // session(C('SITE_ID'),$result['Belong_to_which_site']);
 
-            $site = M('t_sites')->field('name,type_name')->find($result['Belong_to_which_site']);
-            session(C('SITE_TYPE'), $site['type_name']);
-            session(C('SITE_NAME'), $site['name']);
+            // $site = M('t_sites')->field('name,type_name')->find($result['Belong_to_which_site']);
+            // session(C('SITE_TYPE'), $site['type_name']);
+            // session(C('SITE_NAME'), $site['name']);
         }
         return $data;
     }
@@ -78,11 +79,12 @@ class LoginService extends CommonService
      */
     public function exitLogin()
     {
-        if (session(C('LOGINNAME')) == null || 
-        		session(C('USER_ID')) == null ||
-            	session(C('TYPE')) == null ||
-           		session(C('SUPERORNOT') == null)
-        ){
+          // if (session(C('LOGINNAME')) == null || 
+        		// session(C('USER_ID')) == null ||
+            	// session(C('TYPE')) == null ||
+           		// session(C('SUPERORNOT') == null)
+        // )
+        if(session(C('USER_ID')) == null){
             return $this->errorResultReturn("您还未登录");
         }else {
             session(C('USERNAME'), null);
@@ -90,7 +92,7 @@ class LoginService extends CommonService
             session(C('USER_ID'), null);
             session(C('TYPE'), null);
             session(C('SUPERORNOT'), null);
-            $this->exitLoginLog();
+            // $this->exitLoginLog();
             return $this->successResultReturn("成功退出登录");
         }
     }

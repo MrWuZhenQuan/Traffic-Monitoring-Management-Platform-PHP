@@ -32,6 +32,7 @@ Class WechatBindingController extends Controller {
         $token = $this->getToken($userId);
         // p($token);die;
         // $token = 'weixin';
+        writeSyslog($token,'wechat',1);
         $Service = D('WechatBinding','Service');
         $wechat = new Wechat($token);
         $request =  $wechat->request();
@@ -125,8 +126,8 @@ Class WechatBindingController extends Controller {
     public function getToken(){
 
          if(!empty($_GET['id']) || isset($_GET['id'])){
-            $where['site_id']=$_GET['id'];
-            $wechat=M("t_wx_users")->where($where)->find();
+            $where['user_id']=$_GET['id'];
+            $wechat=M("wx_users")->where($where)->find();
             $token=$wechat['token'];
             
             return $token;

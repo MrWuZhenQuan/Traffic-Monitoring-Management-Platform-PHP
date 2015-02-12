@@ -9,10 +9,10 @@ namespace Home\Service;
 class WechatBindingService extends CommonService {
 
 	/* 数据库表 */
-    const RETDATABASE = 't_wx_respond';
-	const USERDATABASE = 't_wx_users';
-	const MSGDATABASE = 't_wx_message';
-	const CONTENTDATABASE = 't_news_release';
+    const RETDATABASE = 'wx_respond';
+	const USERDATABASE = 'wx_users';
+	const MSGDATABASE = 'wx_message';
+	const CONTENTDATABASE = 'news_release';
 	/*查询条件*/
 	private $condition = 'nrtype';
 
