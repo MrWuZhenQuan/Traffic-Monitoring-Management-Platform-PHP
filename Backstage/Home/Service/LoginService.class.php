@@ -79,12 +79,12 @@ class LoginService extends CommonService
      */
     public function exitLogin()
     {
+        if(session(C('USER_ID')) == null){
           // if (session(C('LOGINNAME')) == null || 
         		// session(C('USER_ID')) == null ||
             	// session(C('TYPE')) == null ||
            		// session(C('SUPERORNOT') == null)
         // )
-        if(session(C('USER_ID')) == null){
             return $this->errorResultReturn("您还未登录");
         }else {
             session(C('USERNAME'), null);
