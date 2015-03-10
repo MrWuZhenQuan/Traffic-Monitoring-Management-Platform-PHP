@@ -1,20 +1,19 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-class IndexController extends Controller {
+class IndexController extends CommonController {
 
 	public function start(){
-		
-		$this->display();
+	       $this->display();
 	}
 
-    public function index(){
+            public function index(){
     	$Model = M('user');
     	$this->display();
-    }
+            }
 
-    public function initView(){
-    	
-    	$this->display();
-    }
+            public function initView(){
+            	
+            	$this->display();
+            }
 }

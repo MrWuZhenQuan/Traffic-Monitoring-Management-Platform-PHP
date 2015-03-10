@@ -19,7 +19,7 @@ class CommonController extends Controller {
     public function _initialize()
     {
         //检测是否登录
-        //$this->loginOrNot();
+        $this->loginOrNot();
 
         //如果为超级管理员，则输出全部菜单
         // if (session(C('SUPERORNOT')) == true)
@@ -41,13 +41,13 @@ class CommonController extends Controller {
             $this->redirect('Login/index');
         }else{
             //保证同一个账户不能同时登录
-            $loginname = session(C('LOGINNAME'));
-            $clientSid = cookie('PHPSESSID');
-            $userModel = M('t_sys_user');
-            $loginUser = $userModel->where(array('Loginname' => $loginname))->find();
-            $dbSid = $loginUser['SessionID'];
-            if($clientSid != $dbSid)
-                $this->redirect('Login/index');
+            // $loginname = session(C('LOGINNAME'));
+            // $clientSid = cookie('PHPSESSID');
+            // $userModel = M('t_sys_user');
+            // $loginUser = $userModel->where(array('Loginname' => $loginname))->find();
+            // $dbSid = $loginUser['SessionID'];
+            // if($clientSid != $dbSid)
+            //     $this->redirect('Login/index');
         }
     }
 

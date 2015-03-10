@@ -7,7 +7,6 @@ class LoginController extends Controller {
         $this->display();
     }
 
-
     /**
      * 登录业务，如果登录成功，便在页面上进行跳转
      */
