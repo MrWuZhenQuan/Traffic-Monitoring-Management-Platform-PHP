@@ -4,6 +4,8 @@
 </head>
 <body>
 <include file="./Backstage/Home/View/Common/framework.html"/>
+<input id="traffic_data" value='{$data}' style='display:none'/>
+<input id="device" value='{$device}' style='display:none'/>
                 <div class="span9" id="content">
 
                     <!-- morris graph chart -->
@@ -304,23 +306,17 @@
 
 
         // Morris Line Chart
-        var tax_data = [
-            {"period": "2013-04"},
-            {"period": "2013-03", "visits": 3351, "signups": 729, "device3": 660},
-            {"period": "2013-02", "visits": 2469, "signups": 1318, "device3": 222},
-            {"period": "2013-01", "visits": 2246, "signups": 461, "device3": 330},
-            {"period": "2012-12", "visits": 3171, "signups": 1676, "device3": 444},
-            {"period": "2012-11", "visits": 2155, "signups": 681, "device3": 660},
-            {"period": "2012-10", "visits": 1226, "signups": 620, "device3": 660},
-            {"period": "2012-09", "visits": 2245, "signups": 500, "device3": 660}
-        ];
+        var traffic = $('#traffic_data').val();
+        var device = $('#device').val();
+        var tax_data = JSON.parse(traffic);
+        var y = JSON.parse(device);
+
         Morris.Line({
             element: 'hero-graph',
             data: tax_data,
-            xkey: 'period',
-            xLabels: "month",
-            ykeys: ['visits', 'signups','device3'],
-            labels: ['Visits', 'User signups','Device3']
+            xkey: 'time',
+            ykeys: y.s,
+            labels: y.b
         });
 
 
