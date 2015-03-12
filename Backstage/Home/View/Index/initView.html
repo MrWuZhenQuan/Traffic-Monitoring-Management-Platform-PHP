@@ -5,7 +5,8 @@
 <body>
 <include file="./Backstage/Home/View/Common/framework.html"/>
 <input id="traffic_data" value='{$data}' style='display:none'/>
-<input id="device" value='{$device}' style='display:none'/>
+<input id="deviceName" value='{$device}' style='display:none'/>
+<input id="allDeviceData" value='{$allDeviceData}' style='display:none'/>
                 <div class="span9" id="content">
 
                     <!-- morris graph chart -->
@@ -39,11 +40,11 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span6 chart">
-                                    <h5>Devices sold</h5>
+                                    <h5>设备总人流量统计</h5>
                                     <div id="hero-bar" style="height: 250px;"></div>
                                 </div>
                                 <div class="span5 chart">
-                                    <h5>Month traffic</h5>
+                                    <h5>设备总人流量占比</h5>
                                     <div id="hero-donut" style="height: 250px;"></div>    
                                 </div>
                             </div>
@@ -271,19 +272,14 @@
         });
 
         // Morris Bar Chart
+        var allDeviceData = $('#allDeviceData').val();
+        var allDeviceData = JSON.parse(allDeviceData);
         Morris.Bar({
             element: 'hero-bar',
-            data: [
-                {device: '1', sells: 136},
-                {device: '3G', sells: 1037},
-                {device: '3GS', sells: 275},
-                {device: '4', sells: 380},
-                {device: '4S', sells: 655},
-                {device: '5', sells: 1571}
-            ],
+            data: allDeviceData.bar,
             xkey: 'device',
-            ykeys: ['sells'],
-            labels: ['Sells'],
+            ykeys: ['traffic'],
+            labels: ['Traffic'],
             barRatio: 0.4,
             xLabelMargin: 10,
             hideHover: 'auto',
@@ -294,22 +290,17 @@
         // Morris Donut Chart
         Morris.Donut({
             element: 'hero-donut',
-            data: [
-                {label: 'Direct', value: 25 },
-                {label: 'Referrals', value: 40 },
-                {label: 'Search engines', value: 25 },
-                {label: 'Unique visitors', value: 10 }
-            ],
-            colors: ["#30a1ec", "#76bdee", "#c4dafe"],
+            data: allDeviceData.dount,
+            colors: ["#30a1ec", "#76bdee", "#c4dafe","#3d88ba"],
             formatter: function (y) { return y + "%" }
         });
 
 
         // Morris Line Chart
         var traffic = $('#traffic_data').val();
-        var device = $('#device').val();
+        var deviceName = $('#deviceName').val();
         var tax_data = JSON.parse(traffic);
-        var y = JSON.parse(device);
+        var y = JSON.parse(deviceName);
 
         Morris.Line({
             element: 'hero-graph',
@@ -354,7 +345,7 @@
         }
         </script>
         <script type="text/javascript">
-            $('#menu_item_1').addClass('active');   
+            $('#menu_item_2').addClass('active');   
         </script>
 </body>
 </html>

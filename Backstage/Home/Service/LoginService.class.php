@@ -4,7 +4,7 @@ namespace Home\Service;
 /**
  * Class LoginService
  * @package Home\Controller
- * @author edvard
+ * @author qax
  * @time 2014.9.23 7:26
  */
 class LoginService extends CommonService
