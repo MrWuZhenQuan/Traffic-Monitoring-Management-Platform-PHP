@@ -30,7 +30,7 @@ class IndexController extends CommonController {
 
     public function updateTestTime()
     {
-        for ($i=1; $i <=2 ; $i++) { 
+        for ($i=1; $i <=3 ; $i++) { 
             $data['id'] = $i;
             $data['created_at'] = date('Y-m-d H:i:s');
             M('traffic_data')->save($data);

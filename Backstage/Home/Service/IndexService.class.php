@@ -14,7 +14,7 @@ class IndexService extends CommonService {
 	private $zeroTime ='';
 
 
-	public function getDeviceName(){
+    public function getDeviceName(){
         foreach ($this->deviceMsg as $key => $value) {
             $name['s'][$key] = $value['name'];
             $name['b'][$key] = ucfirst($value['name']);
@@ -62,8 +62,10 @@ class IndexService extends CommonService {
     }
 
     public function getDiffentPeriodData(){
-		/*获取人流量信息*/
-    	$traffic = $this->getTrafficData($this->zeroTime);
+        /*计算零点时间**/
+        $this->countZeroTime();
+        /*获取人流量信息*/
+        $traffic = $this->getTrafficData($this->zeroTime);
         //p($d = date('Y-m-d H:i:s',$data[0]['created_at']));
         $array = array();
         /*创建数据格式模型*/
@@ -122,8 +124,7 @@ class IndexService extends CommonService {
         $currentHour = date('H',$time);
         $minute = date('i',$time)*60;
         $second = date('s',$time);
-        /*计算零点时间**/
-        $this->zeroTime = $time-($currentHour*3600)-$minute-$second;
+
         for ($i=0; $i < 24; $i++) {
             if($i <= $currentHour){
                 $arrModel = array('time' => $time-(($currentHour-$i)*3600)-$minute-$second);
@@ -138,6 +139,15 @@ class IndexService extends CommonService {
         }
 
         return $arr;
+    }
+
+    private function countZeroTime(){
+        $time = time();
+        $currentHour = date('H',$time);
+        $minute = date('i',$time)*60;
+        $second = date('s',$time);
+        /*计算零点时间**/
+        $this->zeroTime = $time-($currentHour*3600)-$minute-$second;
     }
 
 }
