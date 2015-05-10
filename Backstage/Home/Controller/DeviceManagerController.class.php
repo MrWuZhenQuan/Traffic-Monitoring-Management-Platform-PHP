@@ -7,4 +7,5 @@ class DeviceManagerController extends CommonController {
     	$this->display();
     }
 
+    
 }

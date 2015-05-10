@@ -14,7 +14,7 @@ Class WechatMenuController extends CommonController {
 
 	public function index(){
         $where['user_id'] = $_SESSION['USER_ID'];
-        $wechat=M("t_wx_menu")->where($where)->find();
+        $wechat=M("wx_menu")->where($where)->find();
         //echo substr_count($wechat);
         $this->assign("wechat",$wechat);
 		$this->display("Wechat/menu");
@@ -78,7 +78,7 @@ Class WechatMenuController extends CommonController {
 
     public function get_access_token(){
         $where['user_id'] = $_SESSION['USER_ID'];
-        $wechat=M("t_wx_users")->where($where)->find();
+        $wechat=M("wx_users")->where($where)->find();
 
         $json=$this->http_request_json("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$wechat['app_id']."&secret=".$wechat['app_secret']);
 

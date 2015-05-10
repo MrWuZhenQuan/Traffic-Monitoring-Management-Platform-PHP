@@ -12,17 +12,17 @@ class WechatMenuService extends CommonService {
 		$data['created_at'] = time();
 		$data['user_id'] = $_SESSION['USER_ID'];
 
-		return $this->add($data,"t_wx_menu");
+		return $this->add($data,"wx_menu");
 	}
 
 	public function updateWechatMenu($data){
 		$data['updated_at'] = time();
-		return $this->update($data,"t_wx_menu","更新成功！");
+		return $this->update($data,"wx_menu","更新成功！");
 	}
 
 	public function deleteWechatMenu($data){
 
-		return $this->delete($data,"t_wx_menu");
+		return $this->delete($data,"wx_menu");
 	}
 }
  ?>

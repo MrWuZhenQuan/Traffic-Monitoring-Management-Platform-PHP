@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/backstage/css/wechat-menu/wechat-menu.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/assets/wechat-menu.css"/>
 
     <style>
         .board {
@@ -21,49 +21,26 @@
     </style>
 </head>
 <body>
-<include file="./Backstage/Home/View/Common/framework.html"/>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<!-- <header>
-    <div class="row title">
-        <div class="col-md-12">
-            <h3>
-                <ol class="breadcrumb">
-                    <li>
-                        <span class="glyphicon glyphicon-star"></span> 菜单设置
-                    </li>
-                </ol>
-            </h3>
-        </div>
-    </div>
-</header> -->
-    <h3>
-        <ol class="breadcrumb table-title">
-            <li><a class="product">{$navigation[0]}</a></li>
-            <li class="active">{$navigation[1]}</li>
-            <!--搜索框-->
-<!--             <div class="search input-group-sm"><input id="search-keyword" type="text" class="form-control"
-                                                      placeholder="搜索">
-                <span class="input-group-btn">
-                    <a class="btn btn-default btn-search" href="" type="button" style="border:0;padding-bottom: 2px;
-                        margin-top: -2px;" placeholder="Username"><span class="glyphicon glyphicon-search" style="color:#ccc"></span>
-                    </a>
-                </span>
-
-            </div> -->
-            <!--搜索框结束-->
-<!--             <div class="function">
-                <a href='{:U("ProductType/add_type")}'>
-                    <li><img src="__PUBLIC__/backstage/framework/img/add.png">
-                        <p>添加</p>
-                    </li>
-                </a>
-            </div> -->
-
-        </ol>
-    </h3>
-<div id="body-wrapper">
-    <div class="content">
-        <div class="container">
+<include file="./Backstage/Home/View/Common/weixin.html"/>
+               <!--/span-->
+    <div class="span9" id="content">
+                           <div class="navbar">
+                                <div class="navbar-inner">
+                                    <ul class="breadcrumb">
+                                        <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
+                                        <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
+                                        <li>
+                                            <a href="#">WechatManagement</a> <span class="divider">/</span>    
+                                        </li>
+                                        <li>
+                                            <a href="#">WechatAcountManagement</a> <span class="divider">/</span> 
+                                        </li>
+                                        <li class="active">Tools</li>
+                                    </ul>
+                                </div>
+                            </div>
+   
+        <div id="custom-bind" class="tab-pane active">
             <div class="row alert alert-info" style="margin: 20px 0;">
                 <strong>温馨提示: </strong> <br>
                 1.最多生成<strong>3 个一级菜单</strong>，每个一级菜单下最多可以生成 <strong>5 个二级菜单</strong>，菜单<strong>最多支持两层</strong>。<br/>
@@ -73,24 +50,24 @@
                 最多生成<strong>3 个一级菜单</strong>，每个一级菜单下最多可以生成 <strong>5 个二级菜单</strong>，菜单<strong>最多支持两层</strong>。<br/>
             </div>
 
-            <div class="row operator">
-                <div class="col-md-2">
+            <div class="operator">
+                <div class="col-md-2" style="float:left;">
                     <a href='#bottom' class="btn btn-primary" id="add-top-menu">添加一级菜单</a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2" style="float:left;margin-left:20px">
                     <form action="{:U('WechatMenu/saveMenu')}" method="post">
                         <button class="btn btn-primary" type="submit" id="save-all-menu">保存菜单</button>
                         <input type="hidden" id="save-menu-input" name="wechat[content]"/>
                         <input type="hidden" value="{$wechat['id']}" name="wechat[id]"/>
                     </form>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2" style="float:left;">
                     <form action="{:U('WechatMenu/postMenu')}" method="post">
                         <button class="btn btn-primary" type="submit" id="generate-menu">发送菜单</button>
                         <input type="hidden" id="generate-menu-input" name="wechat"/>
                     </form>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2" style="float:left;">
 <!--                     <a class="btn btn-primary" href="{:U('WechatMenu/deleteMenu')}?id={$wechat['id']}" >撤销菜单</a> -->
                     <form action="{:U('WechatMenu/deleteMenu')}" method="post">
                         <button class="btn btn-primary" type="submit" id="generate-menu">撤销菜单</button>
@@ -98,7 +75,7 @@
                     </form>
                 </div>
             </div>
-            <form class="row wechat-menu" style=" margin-top: 30px;">
+            <form class="wechat-menu" style=" margin-top: 30px;">
                 <table id="menu-table" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -114,12 +91,12 @@
                 </table>
             </form>
             <p id='bottom'></p>
-        </div>
+        
     </div>
 </div>
-</div>
+
 </body>
-    <script type="text/javascript" src="__PUBLIC__/backstage/js/wechat-menu/wechat-menu.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/assets/wechat-menu.js"></script>
     <script>
         //初始化菜单内容
         initMenu('{$wechat['content']}');
