@@ -20,13 +20,13 @@
                 <div class="col-md-5" style="margin-top: 10px;">
                     <form id="form" action="{:U('WechatReply/add_follow_text_reply')}" method="post">
                         <div class="form-group">
-                            <label for="reply-content">自动回复内容</label><br>
+                            <label for="reply-content">Auto Reply</label><br>
                             <input type="hidden" name="wechat[id]" value="{$wechat['id']}"/>
                             <textarea id="reply-content" name="wechat[content]" class="form-group" style="width:444px;height:100px">{$wechat['content']}</textarea>
-                            <span class="help-block">必填, 用户添加您的时候自动回复语；超链接添加形式，如：&lt;a href="http://www.baidu.com"&gt;百度&lt;/a&gt;</span>
+                            <span class="help-block">Required, Format：&lt;a href="http://www.baidu.com"&gt;百度&lt;/a&gt;</span>
                         </div><br><br>
                         <div>
-                            <button type="submit" class="btn btn-primary" id="save" >保 存
+                            <button type="submit" class="btn btn-primary" id="save" >save
                             </button>
                             <!-- <button type="button" class="btn btn-default" id="return">切换到图文回复</button> -->
                         </div>

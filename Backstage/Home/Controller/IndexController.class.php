@@ -16,14 +16,14 @@ class IndexController extends CommonController {
 
     public function initView(){
 
-        $Service = D('Index','Service');
-        $data = $Service->getDiffentPeriodData();
-        $deviceName = $Service->getDeviceName();
-        $allDeviceData = $Service->getDiffentDeviceData();
+        $Service = D('Index','Service'); //打开业务服务层
+        $data = $Service->getDiffentPeriodData();//获取不同时期客流量数据
+        $deviceName = $Service->getDeviceName();//获取设备名称
+        $allDeviceData = $Service->getDiffentDeviceData();//获取不同设备客流量信息
         // p($deviceName);
-        $this->assign('data',$data);
-        $this->assign('device',$deviceName);
-        $this->assign('allDeviceData',$allDeviceData);
+        $this->assign('data',$data);//将获取不同时期客流量数据抛出
+        $this->assign('device',$deviceName);//将设备名称数据抛出
+        $this->assign('allDeviceData',$allDeviceData);//将不同设备客流量信息
 
         $this->display();
     }
