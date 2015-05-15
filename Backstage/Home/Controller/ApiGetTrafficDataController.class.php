@@ -21,4 +21,9 @@ class ApiGetTrafficDataController extends Controller {
 
 		echo json_encode($Service->add($get));
 	}
+
+	public function getDeviceId(){
+		$Device = M("device")->select();
+		echo json_encode($Device);
+	}
 }

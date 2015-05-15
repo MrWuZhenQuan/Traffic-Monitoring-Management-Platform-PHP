@@ -11,7 +11,7 @@ class IndexController extends CommonController {
 
     public function index(){
     	$Model = M('user');
-    	$this->display();
+    	$this->display("Index/video");
     }
 
     public function initView(){

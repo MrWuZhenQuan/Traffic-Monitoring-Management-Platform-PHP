@@ -1,0 +1,12 @@
+Time 2015-05-15 20:46:08
+WechatBinding "XP9Wzt3O"
+Time 2015-05-15 20:46:08
+WechatBinding {"ToUserName":"gh_48bd2d13605d","FromUserName":"omkuot1DgYQA3R6wJwisbMVvMdeQ","CreateTime":"1431693967","MsgType":"text","Content":"\u5475\u5475","MsgId":"6149078766351820474"}
+Time 2015-05-15 21:58:21
+WechatBinding "XP9Wzt3O"
+Time 2015-05-15 21:58:21
+WechatBinding {"ToUserName":"gh_48bd2d13605d","FromUserName":"omkuot1DgYQA3R6wJwisbMVvMdeQ","CreateTime":"1431698300","MsgType":"text","Content":"TrafficData","MsgId":"6149097376445123655"}
+Time 2015-05-15 22:24:32
+WechatBinding "XP9Wzt3O"
+Time 2015-05-15 22:24:32
+WechatBinding {"ToUserName":"gh_48bd2d13605d","FromUserName":"omkuot1DgYQA3R6wJwisbMVvMdeQ","CreateTime":"1431699868","MsgType":"text","Content":"abc","MsgId":"6149104110953848329"}

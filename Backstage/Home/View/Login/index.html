@@ -47,9 +47,9 @@
             　　//这里是ajax提交成功后，PHP程序返回的数据处理函数。msg是返回的数据，数据类型在dataType参数里定义!
                 if (data.status == 0) {
                     $('#tip').text(data.content);
-                    if(data.ismobile==1){
-                      $('#form-signin').attr('action',"{:U('Order/vm')}");
-                    }
+                    // if(data.ismobile==1){
+                    //   $('#form-signin').attr('action',"{:U('Order/vm')}");
+                    // }
                     $('#form-signin').submit();
                 }
                 $('#tip').text(data.content);

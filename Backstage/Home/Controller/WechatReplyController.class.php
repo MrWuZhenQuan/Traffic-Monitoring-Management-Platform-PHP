@@ -84,15 +84,15 @@ Class WechatReplyController extends CommonController {
             $wechat['user_id'] = 0;
         $data=M('wx_users')->getBySiteId($wechat['user_id']);
         $url = U('WechatReply/index',array('Controller' =>'WechatReply','Method'=>'index'));
-        if(is_null($data) || empty($data)){
+        // if(is_null($data) || empty($data)){
             $Wechat =D('WechatReply','Service');
     		//$_SESSION['token']=$wechat['token'];
     		$wechat['created_at'] = time();
 
             $this->jump($Wechat->addWechatUser($wechat),$url);
-        }else{
-            return $this->error('公众账号信息已存在！', U('WechatReply/index',array('Controller' =>'WechatReply','Method'=>'index')));
-        }
+        // }else{
+        //     return $this->error('公众账号信息已存在！', U('WechatReply/index',array('Controller' =>'WechatReply','Method'=>'index')));
+        // }
 	}
 
     public function addLinkReply(){

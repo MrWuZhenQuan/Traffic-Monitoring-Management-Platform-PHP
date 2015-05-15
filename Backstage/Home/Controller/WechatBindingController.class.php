@@ -21,12 +21,24 @@ Class WechatBindingController extends Controller {
                             'Content' => '12');
         $Service = D('WechatBinding','Service');
         $key = '航展';
-        $msg = $Service->getContent($key);
+        // $msg = $Service->getContent($key);
 
-        p($msg);die;
+        
+        $Data = D('Index','Service'); //打开业务服务层
+        $allDeviceData = json_decode($Data->getDiffentDeviceData(),true);//获取不同设备客流量信息
+        p($allDeviceData["bar"]);
+        p($allDeviceData["bar"][0]);
+        foreach ($allDeviceData['bar'] as $key => $value) {
+            p($value["device"]);
+            $str .= $value["device"] ."quyukeliuliangwei:".$value["traffic"]."\n";
+         }  
+
+        p($str);die;
     }
 
-	public function index(){
+
+
+public function index(){
         
         $userId = I('id');
         $token = $this->getToken($userId);
@@ -42,7 +54,7 @@ Class WechatBindingController extends Controller {
 
             switch ($request['MsgType']) {
                 case Wechat::MSG_TYPE_TEXT:
-                    $content = $Service->getContent(htmlspecialchars_decode($request['Content']));
+                    // $content = $Service->getContent(htmlspecialchars_decode($request['Content']));
                     if(!is_null($content)&& !empty($content)){
                         switch (count($content)) {
                             case '0':
@@ -65,6 +77,15 @@ Class WechatBindingController extends Controller {
                                 $wechat->replyNews($content[0],$content[1],$content[2],$content[3],$content[4]);
                                 break;
                         }
+                    }else if(htmlspecialchars_decode($request['Content'] == "TrafficData"||htmlspecialchars_decode($request['Content'] == "TrafficData")){
+                         $Data = D('Index','Service'); //打开业务服务层
+                         $allDeviceData = json_decode($Data->getDiffentDeviceData(),true);//获取不同设备客流量信息  
+                        foreach ($allDeviceData['bar'] as $key => $value) {
+                            // p($value["device"]);
+                            $str .= $value["device"] ."quyukeliuliangwei:".$value["traffic"]."\n";
+                         }  
+                         
+                         $wechat->replyText($str);                         
                     }else{
                         $wechat->replyText("您发送的内容，小编暂时还不知道，但是我会记下来，逐渐完善的，谢谢!");
                     }
