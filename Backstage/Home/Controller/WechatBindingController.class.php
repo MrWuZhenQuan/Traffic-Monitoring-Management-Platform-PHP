@@ -55,6 +55,11 @@ public function index(){
             switch ($request['MsgType']) {
                 case Wechat::MSG_TYPE_TEXT:
                     // $content = $Service->getContent(htmlspecialchars_decode($request['Content']));
+                        if(htmlspecialchars_decode($request['Content'] == "实时客流量")）{
+                        $content = array("客流量统计表", "请点击打开并查看实时客流量统计图",
+                                "http://szbk.chuzhou.cn/wdck/res/1/10/2011-10/08/A01/res01_attpic_brief.jpg", 
+                                "http://tmp.nat123.net/Traffic-Monitoring-Management-Platform-PHP/index.php/Index/initView.html";
+                        }
                     if(!is_null($content)&& !empty($content)){
                         switch (count($content)) {
                             case '0':
@@ -77,12 +82,19 @@ public function index(){
                                 $wechat->replyNews($content[0],$content[1],$content[2],$content[3],$content[4]);
                                 break;
                         }
-                    }else if(htmlspecialchars_decode($request['Content'] == "TrafficData"||htmlspecialchars_decode($request['Content'] == "TrafficData")){
+                    }else if(htmlspecialchars_decode($request['Content'] == "TrafficData")||htmlspecialchars_decode($request['Content'] == "客流量")){
                          $Data = D('Index','Service'); //打开业务服务层
                          $allDeviceData = json_decode($Data->getDiffentDeviceData(),true);//获取不同设备客流量信息  
                         foreach ($allDeviceData['bar'] as $key => $value) {
                             // p($value["device"]);
-                            $str .= $value["device"] ."quyukeliuliangwei:".$value["traffic"]."\n";
+                            if ($value['traffic'] <=800){
+                                $msg = "该地区实时客流量较少，状态为畅通"；
+                            }else if（$value['traffic'] >800&&$value['traffic']<1600）{
+                                $msg = "该地区实时客流量为中等，状态为相对畅通"；
+                            }else{
+                                $msg = "该地区实时客流量较多，状态为阻塞"；
+                            }
+                            $str .= $value["device"] ."区域客流量为:".$value["traffic"]."\n"。$msg."\n";
                          }  
                          
                          $wechat->replyText($str);                         
@@ -91,19 +103,19 @@ public function index(){
                     }
                     break;
                 case Wechat::MSG_TYPE_IMAGE:
-                    $wechat->replyText("您发送的内容，小编暂时还不知道，但是我会记下来，逐渐完善的，谢谢!");
+                    $wechat->replyText("您发送的图片，小编暂时还不了解，但是我会记下来，逐渐完善的，谢谢!");
                     break;
                 case Wechat::MSG_TYPE_VOICE:
-                    $wechat->replyText("您发送的内容，小编暂时还不知道，但是我会记下来，逐渐完善的，谢谢!");
+                    $wechat->replyText("您发送的语音，小编暂时还能识别，但是我会记下来，逐渐完善的，谢谢!");
                     break;
                 case Wechat::MSG_TYPE_MUSIC:
-                    $wechat->replyText("您发送的内容，小编暂时还不知道，但是我会记下来，逐渐完善的，谢谢!");
+                    $wechat->replyText("您发送的音乐，小编暂时还听不懂，但是我会记下来，逐渐完善的，谢谢!");
                     break;
                 case Wechat::MSG_TYPE_LOCATION:
-                    $wechat->replyText("您发送的内容，小编暂时还不知道，但是我会记下来，逐渐完善的，谢谢!");
+                    $wechat->replyText("您发送的位置，小编暂时还找不到，但是我会记下来，逐渐完善的，谢谢!");
                     break;     
                 case Wechat::MSG_TYPE_LINK:
-                    $wechat->replyText("您发送的内容，小编暂时还不知道，但是我会记下来，逐渐完善的，谢谢!");
+                    $wechat->replyText("您发送的连接，小编暂时还不知道，但是我会记下来，逐渐完善的，谢谢!");
                     break;  
                 case Wechat::MSG_TYPE_EVENT:
                     switch ($request['Event']) {
